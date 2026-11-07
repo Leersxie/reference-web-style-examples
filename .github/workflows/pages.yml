@@ -1,0 +1,60 @@
+name: Deploy reference sample to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build single-file sample
+        run: npm run build:single
+
+      - name: Verify single file
+        run: npm run check:single
+
+      - name: Compose site
+        run: |
+          mkdir -p _site
+          cp honey-city.html _site/index.html
+          if [ -f public/favicon.svg ]; then cp public/favicon.svg _site/favicon.svg; fi
+          printf '参考用网页风格例子 / reference-web-style-examples\n' > _site/README.txt
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

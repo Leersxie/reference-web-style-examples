@@ -1,0 +1,329 @@
+/* ============================================================
+   TRANSITION LAYER · 页面转场几何层
+   全部由转场引擎动态生成节点，样式集中在此
+   ============================================================ */
+
+.hc-tx-host {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-transition);
+  pointer-events: none;
+}
+.hc-tx-host[data-active="true"] {
+  pointer-events: auto;
+}
+
+.hc-tx-root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  contain: strict;
+}
+
+.hc-tx__slab {
+  position: absolute;
+  inset: -2px;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.hc-tx__slab--accent {
+  background: var(--hc-accent);
+}
+.hc-tx__slab--ink {
+  background: var(--hc-ink);
+}
+.hc-tx__slab--dark {
+  background: var(--hc-canvas-2);
+}
+
+.hc-tx__stampwrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 11vh;
+  padding: 0 var(--sz-gutter);
+  opacity: 0;
+  pointer-events: none;
+}
+.hc-tx__stamp {
+  width: 100%;
+  max-width: var(--sz-content-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-6);
+  color: var(--hc-ink);
+  border-bottom: 1px solid var(--hc-line-3);
+  padding-bottom: var(--sp-4);
+}
+.hc-tx__stamp em {
+  display: block;
+  font-style: normal;
+  font-family: var(--hc-font-mono);
+  font-size: var(--fs-10);
+  letter-spacing: 0.26em;
+  color: var(--hc-ink-3);
+  margin-bottom: var(--sp-2);
+}
+.hc-tx__stamp strong {
+  display: block;
+  font-size: clamp(28px, 4.4vw, 56px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.hc-tx__stampmeta {
+  font-family: var(--hc-font-mono);
+  font-size: var(--fs-10);
+  letter-spacing: 0.16em;
+  color: var(--hc-ink-4);
+  text-align: right;
+  line-height: 1.8;
+  white-space: nowrap;
+}
+.hc-tx__track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--hc-accent);
+  transform-origin: left center;
+}
+
+.hc-tx__slice {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--hc-canvas-2);
+  border-right: 1px solid var(--hc-line-2);
+  will-change: transform;
+}
+.hc-tx__slice:nth-child(2n) {
+  background: var(--hc-surface);
+}
+
+.hc-tx__zoom {
+  position: fixed;
+  background: var(--hc-surface-2);
+  border: 1px solid var(--hc-accent);
+  transform-origin: top left;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+.hc-tx__zoom::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--pat-grid);
+  background-size: 64px 64px;
+  opacity: 0.9;
+}
+.hc-tx__zoomlabel {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+  font-family: var(--hc-font-en);
+  font-size: var(--fs-13);
+  letter-spacing: 0.4em;
+  color: var(--hc-ink-2);
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+}
+.hc-tx__zoomlabel::before,
+.hc-tx__zoomlabel::after {
+  content: "";
+  width: 48px;
+  height: 1px;
+  background: var(--hc-accent);
+  opacity: 0.7;
+}
+
+.hc-tx__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-color: var(--hc-surface-2);
+  background-image: var(--pat-stripe);
+  will-change: transform;
+}
+.hc-tx__bar--top {
+  top: 0;
+  transform-origin: top center;
+  border-bottom: 2px solid var(--hc-accent);
+}
+.hc-tx__bar--bottom {
+  bottom: 0;
+  transform-origin: bottom center;
+  border-top: 2px solid var(--hc-accent);
+}
+.hc-tx__barline {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: var(--hc-accent);
+  transform-origin: left center;
+  z-index: 2;
+}
+.hc-tx__wipelabel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  font-family: var(--hc-font-mono);
+  font-size: var(--fs-12);
+  letter-spacing: 0.32em;
+  color: var(--hc-ink-2);
+  text-transform: uppercase;
+  opacity: 0;
+}
+.hc-tx__wipelabel span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 7px 14px;
+  background: var(--hc-canvas);
+  border: 1px solid var(--hc-line-3);
+  border-left: 2px solid var(--hc-accent);
+}
+.hc-tx__wipelabel span::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--hc-accent);
+}
+
+.hc-tx__scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--hc-canvas);
+  will-change: opacity;
+}
+
+.hc-tx__clone {
+  position: fixed;
+  transform-origin: top left;
+  white-space: nowrap;
+  will-change: transform;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.hc-tx__fade {
+  position: absolute;
+  inset: 0;
+  background: var(--hc-canvas);
+  display: grid;
+  place-items: center;
+  font-family: var(--hc-font-mono);
+  font-size: var(--fs-10);
+  letter-spacing: 0.3em;
+  color: var(--hc-ink-4);
+}
+
+/* ---------- P2.3 · 阶梯推挤 ---------- */
+.hc-tx__band {
+  position: absolute;
+  left: 0;
+  width: 104%;
+  border-right-style: solid;
+  border-right-width: 2px;
+  background: var(--hc-canvas-2);
+  will-change: transform;
+}
+.hc-tx__band:nth-child(2n) {
+  background: var(--hc-surface-2);
+}
+
+/* ---------- P2.3 · 四向快门 ---------- */
+.hc-tx__quad {
+  position: absolute;
+  width: 50.2%;
+  height: 50.2%;
+  background: var(--hc-surface-2);
+  will-change: transform;
+}
+.hc-tx__quad:nth-of-type(2),
+.hc-tx__quad:nth-of-type(3) {
+  background: var(--hc-surface-3);
+}
+.hc-tx__seam {
+  position: absolute;
+  background: var(--hc-accent);
+  z-index: 2;
+}
+.hc-tx__diamond {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  background: var(--hc-accent);
+  z-index: 3;
+}
+
+/* ---------- P2.3 · 纸面翻页 ---------- */
+.hc-tx__sheet {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--hc-paper);
+  will-change: transform;
+}
+.hc-tx__sheet.hc-paper {
+  background-image:
+    linear-gradient(to right, var(--hc-paper-line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hc-paper-line-soft) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.hc-tx__sheetlabel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+}
+.hc-tx__sheetlabel strong {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--hc-ink);
+  line-height: 1;
+}
+.hc-tx__sheetlabel span {
+  font-family: var(--hc-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--hc-ink-3);
+  text-transform: uppercase;
+}
+
+/* ---------- P2.3 · 信号故障 ---------- */
+.hc-tx__glitch {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.hc-tx__flash {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}

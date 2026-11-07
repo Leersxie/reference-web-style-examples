@@ -1,0 +1,12 @@
+import { chromium } from 'playwright-core'
+const browser = await chromium.launch({ executablePath: 'C://Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe', headless: true })
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 1000 } })
+const page = await ctx.newPage()
+page.on('console', (m) => console.log('CONSOLE', m.type(), m.text()))
+page.on('pageerror', (e) => console.log('PAGEERROR', e.message))
+await page.goto('file:///H:/Workbuddy%20cangku/mrfz/honey-city.html', { waitUntil: 'load' })
+await page.waitForTimeout(1200)
+console.log('root len', await page.evaluate(() => document.getElementById('root')?.innerHTML.length))
+console.log('scripts', await page.evaluate(() => [...document.scripts].map(s => s.type + ':' + (s.src ? 'src' : 'inline') + ':' + s.textContent.length)))
+console.log('body snippet', (await page.evaluate(() => document.body.innerHTML)).slice(0, 300))
+await browser.close()

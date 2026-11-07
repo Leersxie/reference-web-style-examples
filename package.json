@@ -1,0 +1,32 @@
+{
+  "name": "honey-city-ui",
+  "private": true,
+  "version": "2.1.0",
+  "type": "module",
+  "description": "HONEY CITY · 蜜果城争锋频道 —— 明日方舟风格 UI / 动效仿制研究样本",
+  "scripts": {
+    "dev": "vite --port 5178 --strictPort",
+    "build": "tsc -b && vite build",
+    "build:single": "npm run build && node scripts/inline.mjs",
+    "fonts": "python scripts/build-fonts.py",
+    "preview": "vite preview --port 5178 --strictPort",
+    "pack": "python scripts/pack-source.py",
+    "check:single": "node scripts/check-single.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@fontsource-variable/noto-sans-sc": "^5.3.1",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/oswald": "^5.3.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "playwright-core": "^1.64.1",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.7"
+  },
+  "license": "MIT"
+}

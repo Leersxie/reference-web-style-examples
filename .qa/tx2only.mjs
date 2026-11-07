@@ -1,0 +1,11 @@
+import { chromium } from 'playwright-core'
+const browser = await chromium.launch({ executablePath: 'C://Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe', headless: true })
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 1000 } })
+const page = await ctx.newPage()
+await page.goto('http://127.0.0.1:5178/?tz2=1#/', { waitUntil: 'networkidle' })
+await page.waitForTimeout(1000)
+await page.locator('.hc-corridor__row').first().click()
+await page.waitForTimeout(260)
+await page.screenshot({ path: '.shots/tx2-zoom.png' })
+console.log('tx2 ok')
+await browser.close()

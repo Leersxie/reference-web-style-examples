@@ -1,0 +1,11 @@
+import { chromium } from 'playwright-core'
+const browser = await chromium.launch({ executablePath: 'C://Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe', headless: true })
+const ctx = await browser.newContext({ viewport: { width: 430, height: 932 } })
+const page = await ctx.newPage()
+await page.goto('http://127.0.0.1:5178/?m=1#/lab', { waitUntil: 'networkidle' })
+await page.waitForTimeout(700)
+await page.screenshot({ path: '.shots/p1-lab-430.png', fullPage: true })
+await page.getByRole('button', { name: /转场实验/ }).click()
+await page.waitForTimeout(500)
+await page.screenshot({ path: '.shots/p1-lab-430-motion.png', fullPage: true })
+await browser.close()

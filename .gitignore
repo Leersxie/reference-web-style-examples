@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.shots/
+.fonts-src/
+.workbuddy/
+.vite/
+
+*.tsbuildinfo
+*.zip
+npm-debug.log*
+.DS_Store
+Thumbs.db

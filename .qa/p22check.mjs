@@ -1,0 +1,15 @@
+import { chromium } from 'playwright-core'
+const browser = await chromium.launch({ executablePath: 'C://Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe', headless: true })
+const errors = []
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 1100 } })
+const page = await ctx.newPage()
+page.on('pageerror', e => errors.push(e.message))
+page.on('console', m => { if (m.type() === 'error') errors.push(m.text()) })
+await page.goto('http://127.0.0.1:5178/?p22=1#/', { waitUntil: 'networkidle' })
+await page.waitForTimeout(1300)
+await page.screenshot({ path: '.shots/p22-home.png' })
+await page.goto('http://127.0.0.1:5178/?p22=2#/channel/arena', { waitUntil: 'networkidle' })
+await page.waitForTimeout(900)
+await page.screenshot({ path: '.shots/p22-detail.png' })
+console.log('errors', errors.slice(0,5))
+await browser.close()

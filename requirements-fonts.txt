@@ -1,0 +1,3 @@
+# 中文字体子集化依赖（仅 npm run fonts 需要）
+fonttools[woff]>=4.50
+brotli>=1.1

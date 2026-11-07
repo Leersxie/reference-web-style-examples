@@ -1,0 +1,359 @@
+/* ============================================================
+   HONEY CITY · DESIGN TOKENS（P2 · 方舟实测体系）
+   依据：素材库 02-案例库/明日方舟/01-设计规范.md + tokens/ak-tokens.css
+   规则：颜色表达功能；纸面 / 石墨分层；切角 = 可点击；1px 细线。
+   ============================================================ */
+
+:root {
+  /* ---------- 表面 ---------- */
+  --hc-canvas: #111315;
+  --hc-canvas-2: #15181a;
+  --hc-surface: #1b1e20;
+  --hc-surface-2: #222628;
+  --hc-surface-3: #2e3234;
+  --hc-inset: #0c0e0f;
+  --hc-paper: #f2f0ea;
+  --hc-paper-2: #e7e4da;
+  --hc-paper-ink: #191b1a;
+  --hc-paper-ink-2: rgba(25, 27, 26, 0.55);
+  --hc-paper-line-soft: rgba(25, 27, 26, 0.04);
+  --hc-paper-line-ghost: rgba(25, 27, 26, 0.14);
+  --hc-console: #15181a;
+  --hc-graphite: rgba(66, 66, 66, 0.92);
+  --hc-topbar-bg: #0e1012;
+  --hc-scrim: rgba(8, 9, 10, 0.72);
+
+  /* ---------- 文字 ---------- */
+  --hc-ink: #f8f8f5;
+  --hc-ink-2: rgba(248, 248, 245, 0.7);
+  --hc-ink-3: rgba(248, 248, 245, 0.5);
+  /* ink-4 仅用于装饰、图标、禁用态；正文/提示请用 ink-3 */
+  --hc-ink-4: rgba(248, 248, 245, 0.34);
+
+  /* ---------- 线 ---------- */
+  --hc-line-1: rgba(248, 248, 245, 0.1);
+  --hc-line-2: rgba(248, 248, 245, 0.18);
+  --hc-line-3: rgba(248, 248, 245, 0.34);
+  --hc-line-4: rgba(248, 248, 245, 0.52);
+  --hc-line-strong: 4px;
+
+  /* ---------- 信号色（功能语义） ---------- */
+  --hc-accent: #f6540e;
+  --hc-accent-ink: #1a0f08;
+  --hc-accent-wash: rgba(246, 84, 14, 0.14);
+  --hc-accent-line: rgba(246, 84, 14, 0.46);
+  --hc-action: #f1c644;
+  --hc-info: #4aabea;
+  --hc-info-official: #19d1ff;
+  --hc-success: #46c47c;
+  --hc-warn: #f1c644;
+  --hc-danger: #e33b3b;
+  --hc-disabled: rgba(248, 248, 245, 0.28);
+
+  /* ---------- 字体 ---------- */
+  --hc-font-cn: "Noto Sans SC", "Source Han Sans SC", "MiSans", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  --hc-font-en: "Oswald", "Bahnschrift", "Segoe UI", sans-serif;
+  --hc-font-mono: "IBM Plex Mono", "Consolas", "SFMono-Regular", ui-monospace,
+    monospace;
+
+  --fs-10: 10px;
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-22: 22px;
+  --fs-28: 28px;
+  --fs-36: 36px;
+  --fs-48: 48px;
+  --fs-64: 64px;
+  --fs-88: 88px;
+  --fs-136: 136px;
+
+  --lh-tight: 1.08;
+  --lh-snug: 1.28;
+  --lh-base: 1.55;
+  --lh-loose: 1.75;
+
+  --ls-label: 0.16em;
+  --ls-label-wide: 0.28em;
+  --ls-title: -0.04em;
+
+  /* ---------- 间距 ---------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-7: 32px;
+  --sp-8: 40px;
+  --sp-9: 48px;
+  --sp-10: 64px;
+  --sp-11: 88px;
+  --sp-12: 120px;
+
+  /* ---------- 尺寸 ---------- */
+  --sz-rail: 76px;
+  --sz-topbar: 56px;
+  --sz-content-max: 1520px;
+  --sz-gutter: var(--sp-9);
+  --sz-control-sm: 28px;
+  --sz-control: 40px;
+  --sz-control-lg: 48px;
+  --sz-icon: 20px;
+  --hit-min: 44px;
+
+  /* ---------- 几何 ---------- */
+  --bd-1: 1px solid var(--hc-line-1);
+  --bd-2: 1px solid var(--hc-line-2);
+  --bd-3: 1px solid var(--hc-line-3);
+  --bd-accent: 1px solid var(--hc-accent);
+  --radius-0: 0px;
+  --radius-1: 1px;
+  --radius-round: 2px;
+  --cut-sm: 6px;
+  --cut-md: 12px;
+  --cut-lg: 20px;
+  --cut: var(--cut-md);
+
+  /* ---------- 阴影（只给浮层） ---------- */
+  --shadow-float: 0 16px 32px rgba(0, 0, 0, 0.32);
+  --shadow-menu: 0 10px 24px rgba(0, 0, 0, 0.32);
+
+  /* ---------- 层级 ---------- */
+  --z-base: 0;
+  --z-sticky: 100;
+  --z-rail: 200;
+  --z-topbar: 300;
+  --z-drawer: 700;
+  --z-modal: 800;
+  --z-toast: 850;
+  --z-transition: 900;
+  --z-cursor: 1000;
+
+  /* ---------- 动效 ---------- */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-emphasis: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-transform: cubic-bezier(0.2, 0, 0, 1);
+  --ease-linear: linear;
+
+  --motion-instant: 120ms;
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-panel: 300ms;
+  --motion-page: 420ms;
+  --motion-hero: 680ms;
+
+  --dur-cover: 420ms;
+  --dur-reveal: 380ms;
+  --dur-swap: 60ms;
+
+  /* ---------- 结构色 ---------- */
+  --hc-shine: rgba(248, 248, 245, 0.07);
+  --hc-hatch: rgba(248, 248, 245, 0.05);
+  --hc-wash: rgba(248, 248, 245, 0.02);
+  --hc-panel-glow: rgba(248, 248, 245, 0.03);
+  --hc-glow-a: rgba(248, 248, 245, 0.02);
+  --hc-glow-b: rgba(248, 248, 245, 0.05);
+  --hc-grain: none;
+
+  /* ---------- 装饰 ---------- */
+  --pat-grid: linear-gradient(to right, var(--hc-line-1) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hc-line-1) 1px, transparent 1px);
+  --pat-grid-size: 32px 32px;
+  --pat-stripe: repeating-linear-gradient(
+    -45deg,
+    transparent 0 5px,
+    var(--hc-line-1) 5px 6px
+  );
+  --pat-halftone: radial-gradient(var(--hc-line-2) 1px, transparent 1px);
+  --pat-halftone-size: 6px 6px;
+  /* 45° 半调点阵（D1 实测：点距 12、角度 45、同色同值）；作 mask 使用，颜色由 currentColor 决定 */
+  --pat-halftone-45: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><g fill='white'><circle cx='2.4' cy='2.4' r='1.5'/><circle cx='7.6' cy='7.6' r='1.5'/></g></svg>");
+  --pat-ticks: repeating-linear-gradient(
+    90deg,
+    var(--hc-line-2) 0 1px,
+    transparent 1px 10px
+  );
+}
+
+/* ---------- 纸面 / 石墨作用域 ---------- */
+.hc-paper {
+  --hc-canvas: #f2f0ea;
+  --hc-canvas-2: #e7e4da;
+  --hc-surface: #f7f5ef;
+  --hc-surface-2: #fbf9f3;
+  --hc-surface-3: #dedad0;
+  --hc-inset: #e3dfd5;
+  --hc-ink: #191b1a;
+  --hc-ink-2: #4a4d50;
+  --hc-ink-3: #5f6259;
+  --hc-ink-4: #6f7269;
+  --hc-line-1: rgba(25, 27, 26, 0.12);
+  --hc-line-2: rgba(25, 27, 26, 0.2);
+  --hc-line-3: rgba(25, 27, 26, 0.36);
+  --hc-line-4: rgba(25, 27, 26, 0.54);
+  --hc-accent: #c2410c;
+  --hc-accent-ink: #fff8f0;
+  --hc-accent-wash: rgba(194, 65, 12, 0.1);
+  --hc-accent-line: rgba(194, 65, 12, 0.4);
+  --hc-action: #8a6412;
+  --hc-info: #1f6e94;
+  --hc-success: #2f6b4f;
+  --hc-warn: #8a6412;
+  --hc-danger: #a8322b;
+  --hc-disabled: #a9a69c;
+  --hc-shadow-float: 0 16px 32px rgba(60, 52, 36, 0.18);
+  color: var(--hc-ink);
+  background-color: var(--hc-canvas);
+}
+.hc-graphite {
+  --hc-canvas: #1b1e20;
+  --hc-canvas-2: #222628;
+  --hc-surface: #262a2c;
+  --hc-surface-2: #2e3234;
+  --hc-surface-3: #3a3f41;
+  --hc-inset: #141719;
+  --hc-ink: #f8f8f5;
+  --hc-ink-2: rgba(248, 248, 245, 0.7);
+  --hc-ink-3: rgba(248, 248, 245, 0.5);
+  --hc-ink-4: rgba(248, 248, 245, 0.34);
+  --hc-line-1: rgba(248, 248, 245, 0.1);
+  --hc-line-2: rgba(248, 248, 245, 0.18);
+  --hc-line-3: rgba(248, 248, 245, 0.34);
+  --hc-line-4: rgba(248, 248, 245, 0.52);
+  color: var(--hc-ink);
+  background-color: var(--hc-canvas);
+}
+
+/* ---------- 频道信号色 ---------- */
+[data-channel="arena"] {
+  --hc-accent: #f6540e;
+  --hc-accent-ink: #1a0f08;
+  --hc-accent-wash: rgba(246, 84, 14, 0.14);
+  --hc-accent-line: rgba(246, 84, 14, 0.46);
+}
+[data-channel="hive"] {
+  --hc-accent: #4aabea;
+  --hc-accent-ink: #06121c;
+  --hc-accent-wash: rgba(74, 171, 234, 0.14);
+  --hc-accent-line: rgba(74, 171, 234, 0.44);
+}
+[data-channel="archive"] {
+  --hc-accent: #f1c644;
+  --hc-accent-ink: #17130a;
+  --hc-accent-wash: rgba(241, 198, 68, 0.14);
+  --hc-accent-line: rgba(241, 198, 68, 0.44);
+}
+[data-channel="workshop"] {
+  --hc-accent: #68d5ba;
+  --hc-accent-ink: #081713;
+  --hc-accent-wash: rgba(104, 213, 186, 0.14);
+  --hc-accent-line: rgba(104, 213, 186, 0.44);
+}
+
+/* 纸面作用域内的频道色：压暗以过对比度 */
+.hc-paper[data-channel="arena"] {
+  --hc-accent: #c2410c;
+  --hc-accent-ink: #fff8f0;
+  --hc-accent-wash: rgba(194, 65, 12, 0.1);
+  --hc-accent-line: rgba(194, 65, 12, 0.4);
+}
+.hc-paper[data-channel="hive"] {
+  --hc-accent: #1f6e94;
+  --hc-accent-ink: #ffffff;
+  --hc-accent-wash: rgba(31, 110, 148, 0.1);
+  --hc-accent-line: rgba(31, 110, 148, 0.4);
+}
+.hc-paper[data-channel="archive"] {
+  --hc-accent: #8a6412;
+  --hc-accent-ink: #ffffff;
+  --hc-accent-wash: rgba(138, 100, 18, 0.1);
+  --hc-accent-line: rgba(138, 100, 18, 0.4);
+}
+.hc-paper[data-channel="workshop"] {
+  --hc-accent: #2f6b5c;
+  --hc-accent-ink: #ffffff;
+  --hc-accent-wash: rgba(47, 107, 92, 0.1);
+  --hc-accent-line: rgba(47, 107, 92, 0.4);
+}
+
+/* ============================================================
+   纸面主题（整站）：Paper Dossier
+   ============================================================ */
+[data-theme="paper"] {
+  --hc-canvas: #e8e3d6;
+  --hc-canvas-2: #f0ebde;
+  --hc-surface: #f6f2e7;
+  --hc-surface-2: #fbf8ef;
+  --hc-surface-3: #ddd7c8;
+  --hc-inset: #ded8c9;
+  --hc-topbar-bg: rgba(232, 227, 214, 0.94);
+  --hc-scrim: rgba(43, 38, 29, 0.55);
+  --hc-ink: #191b1a;
+  --hc-ink-2: #484b46;
+  --hc-ink-3: #5f6259;
+  --hc-ink-4: #8a8c84;
+  --hc-line-1: rgba(25, 27, 26, 0.1);
+  --hc-line-2: rgba(25, 27, 26, 0.18);
+  --hc-line-3: rgba(25, 27, 26, 0.34);
+  --hc-line-4: rgba(25, 27, 26, 0.52);
+  --hc-accent: #8c5a1a;
+  --hc-accent-ink: #fff8ec;
+  --hc-accent-wash: rgba(140, 90, 26, 0.12);
+  --hc-accent-line: rgba(140, 90, 26, 0.42);
+  --hc-success: #3f6a4f;
+  --hc-warn: #8a4b28;
+  --hc-danger: #9a423c;
+  --hc-info: #44697a;
+  --hc-disabled: #a9a69b;
+  --hc-shadow-float: 0 18px 40px rgba(62, 53, 36, 0.18);
+  --hc-shadow-menu: 0 10px 24px rgba(62, 53, 36, 0.14);
+  --hc-shine: rgba(25, 27, 26, 0.05);
+  --hc-hatch: rgba(25, 27, 26, 0.05);
+  --hc-wash: rgba(25, 27, 26, 0.026);
+  --hc-panel-glow: rgba(255, 255, 255, 0.32);
+  --hc-glow-a: rgba(25, 27, 26, 0.02);
+  --hc-glow-b: rgba(25, 27, 26, 0.05);
+  --hc-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .2 0 0 0 0 .18 0 0 0 0 .13 0 0 0 .05 0'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+}
+
+[data-theme="paper"] .hc-paper {
+  --hc-accent: #8c5a1a;
+  --hc-accent-ink: #fff8ec;
+  --hc-accent-wash: rgba(140, 90, 26, 0.12);
+  --hc-accent-line: rgba(140, 90, 26, 0.42);
+}
+[data-theme="paper"][data-channel="arena"],
+[data-theme="paper"] [data-channel="arena"] {
+  --hc-accent: #8c5a1a;
+  --hc-accent-ink: #fff8ec;
+  --hc-accent-wash: rgba(140, 90, 26, 0.12);
+  --hc-accent-line: rgba(140, 90, 26, 0.42);
+}
+[data-theme="paper"][data-channel="hive"],
+[data-theme="paper"] [data-channel="hive"] {
+  --hc-accent: #3d6270;
+  --hc-accent-ink: #f7fbfc;
+  --hc-accent-wash: rgba(61, 98, 112, 0.12);
+  --hc-accent-line: rgba(61, 98, 112, 0.4);
+}
+[data-theme="paper"][data-channel="archive"],
+[data-theme="paper"] [data-channel="archive"] {
+  --hc-accent: #8a4a40;
+  --hc-accent-ink: #fff8f5;
+  --hc-accent-wash: rgba(138, 74, 64, 0.12);
+  --hc-accent-line: rgba(138, 74, 64, 0.4);
+}
+[data-theme="paper"][data-channel="workshop"],
+[data-theme="paper"] [data-channel="workshop"] {
+  --hc-accent: #5a6636;
+  --hc-accent-ink: #fafbf3;
+  --hc-accent-wash: rgba(90, 102, 54, 0.12);
+  --hc-accent-line: rgba(90, 102, 54, 0.4);
+}

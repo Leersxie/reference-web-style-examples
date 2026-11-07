@@ -1,0 +1,36 @@
+import { chromium } from 'playwright-core'
+const browser = await chromium.launch({ executablePath: 'C://Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe', headless: true })
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 1000 } })
+const page = await ctx.newPage()
+const errors = []
+page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()) })
+page.on('pageerror', (e) => errors.push('PAGEERROR: ' + e.message))
+
+await page.goto('file:///H:/Workbuddy%20cangku/mrfz/honey-city.html', { waitUntil: 'load' })
+await page.waitForTimeout(1500)
+console.log('title', await page.title())
+console.log('h1', (await page.locator('h1').first().textContent())?.trim())
+await page.screenshot({ path: '.shots/file-home.png' })
+
+await page.getByRole('button', { name: /进入争锋频道/ }).click()
+await page.waitForTimeout(1300)
+console.log('hash after nav', await page.evaluate(() => location.hash))
+console.log('h1 after nav', (await page.locator('h1').first().textContent())?.trim())
+console.log('overlay roots', await page.evaluate(() => document.querySelectorAll('.hc-tx-root').length))
+await page.screenshot({ path: '.shots/file-detail.png' })
+
+await page.getByRole('button', { name: /索引 INDEX/ }).click()
+await page.waitForTimeout(1300)
+console.log('hash after rail', await page.evaluate(() => location.hash))
+console.log('tiles', await page.locator('.hc-tile').count())
+await page.screenshot({ path: '.shots/file-channels.png' })
+
+await page.getByRole('button', { name: /实验室 LAB/ }).click()
+await page.waitForTimeout(1300)
+await page.getByRole('button', { name: /转场实验/ }).click()
+await page.waitForTimeout(500)
+await page.getByRole('button', { name: '播放' }).first().click()
+await page.waitForTimeout(1400)
+console.log('transition ok', await page.evaluate(() => document.querySelectorAll('.hc-tx-root').length === 0))
+console.log('ERRORS', errors.length, errors.slice(0, 5))
+await browser.close()
